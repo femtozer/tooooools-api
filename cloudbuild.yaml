@@ -5,7 +5,6 @@ steps:
     args:
       - -c
       - echo $$BACKEND_ENV | base64 --decode > .env
-    dir: backend
     secretEnv: ["BACKEND_ENV"]
 
   - id: backend-build
@@ -15,7 +14,6 @@ steps:
       - -t
       - gcr.io/$PROJECT_ID/tooooools-api-ew1-$_ENV:$COMMIT_SHA
       - .
-    dir: backend
 
   - id: backend-push
     name: gcr.io/cloud-builders/docker
